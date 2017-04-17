@@ -9,9 +9,8 @@
 	<groupId>car</groupId>
 	<artifactId>car</artifactId>
 	<version>1.0</version>
-	<name>Spring Boot Web FreeMarker Sample</name>
+	<name>car</name>
 	<description>Spring Boot Web FreeMarker Sample</description>
-	<url>http://maven.apache.org</url>
 	<organization>
 		<name>Pivotal Software, Inc.</name>
 		<url>http://www.spring.io</url>
