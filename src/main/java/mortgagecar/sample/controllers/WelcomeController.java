@@ -23,12 +23,4 @@ public class WelcomeController {
 		return new ModelAndView("sample/welcome", model);
 	}
 
-
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public ModelAndView index() {
-
-		return new ModelAndView("index");
-	}
-
-
 }
