@@ -67,16 +67,14 @@
 <body>
 
 <div class="container">
-    <form class="form-signin" role="form" action="/login" method="post" data-parsley-validate>
+    <form class="form-signin" role="form" action="/login" method="post">
         <h2 class="form-signin-heading">登录</h2>
         <div class="form-group">
-            <input type="text" name="username" class="form-control" value="" placeholder="用户名"
-                 required data-parsley-required-message="不能为空"   autofocus>
+            <input type="text" name="username" class="form-control" value="" placeholder="用户名" autofocus>
 
         </div>
         <div class="form-group">
-            <input type="password" name="password" class="form-control" value="" placeholder="密码"
-                   required data-parsley-required-message="不能为空">
+            <input type="password" name="password" class="form-control" value="" placeholder="密码">
         </div>
         <div class="checkbox">
             <label>
@@ -87,8 +85,55 @@
     </form>
 
 </div>
-
 <!-- Include all compiled plugins (below), or include individual files as needed -->
+<script type="text/javascript" src="plugins/jQuery/jquery-2.1.4.min.js"></script>
 <script src="bootstrap/js/bootstrap.js"></script>
+<script type="text/javascript" src="jquery-validation/jquery.validate.js"></script>
+<script type="text/javascript" src="jquery-validation/localization/messages_zh.js"></script>
+<script>
+
+    $(document).ready(function () {
+
+        $( ".form-signin" ).validate( {
+            rules: {
+                username: {
+                    required: true,
+                    minlength: 2
+                },
+                password: {
+                    required: true,
+                    minlength: 5
+                }
+            },
+            messages: {
+                username: {
+                    required: "Please enter a username",
+                    minlength: "Your username must consist of at least 2 characters"
+                },
+                password: {
+                    required: "Please provide a password",
+                    minlength: "Your password must be at least 5 characters long"
+                }
+            },
+            errorElement: "em",
+            errorPlacement: function ( error, element ) {
+                // Add the `help-block` class to the error element
+                error.addClass( "help-block" );
+
+                if ( element.prop( "type" ) === "checkbox" ) {
+                    error.insertAfter( element.parent( "label" ) );
+                } else {
+                    error.insertAfter( element );
+                }
+            },
+            highlight: function ( element, errorClass, validClass ) {
+                $( element ).parents( ".form-group" ).addClass( "has-error" ).removeClass( "has-success" );
+            },
+            unhighlight: function (element, errorClass, validClass) {
+                $( element ).parents( ".form-group" ).addClass( "has-success" ).removeClass( "has-error" );
+            }
+        } );
+    })
+</script>
 </body>
 </html>
